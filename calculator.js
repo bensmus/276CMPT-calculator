@@ -25,11 +25,12 @@ for (let count = 1; count <= 4; count++) {
     let n = document.getElementById("n" + count);
     let d = document.getElementById("d" + count);
 
-    n.oninput = function () {
-        p.innerHTML = Math.round(n.value / d.value * 100) + "%";
-    };
+    n.oninput = percentUpdate(n, d, p);
+    d.oninput = percentUpdate(n, d, p);
+}
 
-    d.oninput = function () {
+function percentUpdate(n, d, p) {
+    return function () {
         p.innerHTML = Math.round(n.value / d.value * 100) + "%";
     };
 }
