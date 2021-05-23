@@ -21,9 +21,10 @@
 
 let gradeFractions = {}
 let weights = {}
+let rowcount = 4;
 
 // Displaying percentages for all rows
-for (let count = 1; count <= 4; count++) {
+for (let count = 1; count <= rowcount; count++) {
     let p = document.getElementById("p" + count)
     let n = document.getElementById("n" + count);
     let d = document.getElementById("d" + count);
@@ -44,13 +45,34 @@ weightedButton = document.getElementById("wb");
 meanButton = document.getElementById("mb");
 result = document.getElementById("result");
 
+// Store all weights in an object
+for (let count = 1; count <= rowcount; count++) {
+    let w = document.getElementById("w" + count);
+    w.oninput = weightUpdate(w, count);
+}
+
+function weightUpdate(w, count) {
+    return function () {
+        weights[count] = Number(w.value);
+    }
+}
+
 weightedButton.onclick = function () {
     console.log("weightedButton clicked");
+    result.innerHTML = calculateWeighted(weights, gradeFractions);
+}
 
-    // Get all of the weights 
+function calculateWeighted(weights, gradeFractions) {
+    let weightedFraction = 0;
+    for (let count = 1; count <= rowcount; count++) {
+        weightedFraction += weights[count] * gradeFractions[count];
+    }
+    let weighted = Math.round(weightedFraction * 100) + "%";
+    return weighted;
 }
 
 meanButton.onclick = function () {
     console.log("meanButton clicked");
+    result.innerHTML = calculateWeighted({ 1: 0.25, 2: 0.25, 3: 0.25, 4: 0.25 }, gradeFractions);
 }
 
