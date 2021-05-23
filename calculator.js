@@ -19,22 +19,38 @@
 //     p1.innerHTML = Math.round(n1.value / d1.value * 100) + "%";
 // }
 
+let gradeFractions = {}
+let weights = {}
+
 // Displaying percentages for all rows
 for (let count = 1; count <= 4; count++) {
     let p = document.getElementById("p" + count)
     let n = document.getElementById("n" + count);
     let d = document.getElementById("d" + count);
 
-    n.oninput = percentUpdate(n, d, p);
-    d.oninput = percentUpdate(n, d, p);
+    n.oninput = percentUpdate(n, d, p, count);
+    d.oninput = percentUpdate(n, d, p, count);
 }
 
-function percentUpdate(n, d, p) {
+function percentUpdate(n, d, p, count) {
     return function () {
-        p.innerHTML = Math.round(n.value / d.value * 100) + "%";
+        gradeFraction = n.value / d.value;
+        gradeFractions[count] = gradeFraction;
+        p.innerHTML = Math.round(gradeFraction * 100) + "%";
     };
 }
 
+weightedButton = document.getElementById("wb");
+meanButton = document.getElementById("mb");
+result = document.getElementById("result");
 
+weightedButton.onclick = function () {
+    console.log("weightedButton clicked");
 
+    // Get all of the weights 
+}
+
+meanButton.onclick = function () {
+    console.log("meanButton clicked");
+}
 

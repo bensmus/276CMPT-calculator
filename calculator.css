@@ -16,7 +16,7 @@ h2
     color: crimson;
 }
 
-div
+#shaded
 {
     background-color: rgb(218, 236, 240);
     padding: 20px;
@@ -36,7 +36,7 @@ th
     width: 20%;  /* 5 columns, 20% each */
 }
 
-table, th, td 
+table, th, td, #result
 {
     border: 1px solid rgb(163, 163, 163);
     border-collapse: collapse;
@@ -75,4 +75,10 @@ button
     background-color: crimson;
     color: white;
     border: none;
+}
+
+#result 
+{
+    width: 30%;
+    padding: 10px;
 }
