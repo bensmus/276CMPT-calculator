@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourSys - Formula Tester</title>
+    <link rel="stylesheet" href="calculator.css">
+    <link rel="icon" href="resources/favicon.ico">
+    <script src="calculator.js"></script>
+</head>
+
+<body>
+    <h1>Grade Calculator</h1>
+    <div>
+        <!-- "Activities", "Result": h2 -->
+        <h2>Activities</h2>
+        <p>Give grades to the numeric activities: </p>
+        <table>
+            <tr id="row0">
+                <!--row 0-->
+                <th>Name</th>
+                <th>Short Name</th>
+                <th>Weight</th>
+                <th>Grade</th>
+                <th>Percent</th>
+            </tr>
+            <tr>
+                <!--row 1-->
+                <td>Activity 1</td>
+                <td>A1</td>
+                <td><input id="w1" type="text">
+                </td>
+                <td>
+                    <input id=n1 type="text"><b> /
+                    </b><br><input id=d1 type="text">
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <!--row 2-->
+                <td>Activity 2</td>
+                <td>A2</td>
+                <td><input id=w2 type="text"></td>
+                <td>
+                    <input id=n2 type="text"><b> /
+                    </b><br><input id=d2 type="text">
+                <td></td>
+            </tr>
+            <tr>
+                <!--row 3-->
+                <td>Activity 3</td>
+                <td>A3</td>
+                <td><input id=w3 type="text"></td>
+                <td>
+                    <input id=n3 type="text"><b> /
+                    </b><br><input id=d3 type="text">
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <!--row 4-->
+                <td>Activity 4</td>
+                <td>A4</td>
+                <td><input id=w4 type="text"></td>
+                <td>
+                    <input id=n4 type="text"><b> /
+                    </b><br><input id=d4 type="text">
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <h2>Result</h2>
+        <button id=buttonM>MEAN</button>
+        <button id=buttonW>WEIGHTED</button>
+        <!-- Make the div extend -->
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+</body>
+
+</html>
