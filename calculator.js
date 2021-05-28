@@ -4,16 +4,23 @@ let rowcount = 4;
 
 // Displaying percentages for all rows
 for (let count = 1; count <= rowcount; count++) {
-    percentInitialize(count);
+    initialize(count);
 }
 
-function percentInitialize(count) {
+function initialize(count) {
     let p = document.getElementById("p" + count)
     let n = document.getElementById("n" + count);
     let d = document.getElementById("d" + count);
-
+    let w = document.getElementById("w" + count);
+    w.oninput = weightUpdate(w, count);
     n.oninput = percentUpdate(n, d, p, count);
     d.oninput = percentUpdate(n, d, p, count);
+}
+
+function weightUpdate(w, count) {
+    return function () {
+        weights[count] = Number(w.value);
+    }
 }
 
 function percentUpdate(n, d, p, count) {
@@ -26,23 +33,17 @@ function percentUpdate(n, d, p, count) {
 
 weightedButton = document.getElementById("wb");
 meanButton = document.getElementById("mb");
+rowButton = document.getElementById("rb");
 result = document.getElementById("result");
-
-// Store all weights in an object
-for (let count = 1; count <= rowcount; count++) {
-    let w = document.getElementById("w" + count);
-    w.oninput = weightUpdate(w, count);
-}
-
-function weightUpdate(w, count) {
-    return function () {
-        weights[count] = Number(w.value);
-    }
-}
 
 weightedButton.onclick = function () {
     console.log("weightedButton clicked");
     result.innerHTML = calculateWeighted(weights, gradeFractions);
+}
+
+meanButton.onclick = function () {
+    console.log("meanButton clicked");
+    result.innerHTML = calculateWeighted({ 1: 0.25, 2: 0.25, 3: 0.25, 4: 0.25 }, gradeFractions);
 }
 
 function calculateWeighted(weights, gradeFractions) {
@@ -54,8 +55,9 @@ function calculateWeighted(weights, gradeFractions) {
     return weighted;
 }
 
-meanButton.onclick = function () {
-    console.log("meanButton clicked");
-    result.innerHTML = calculateWeighted({ 1: 0.25, 2: 0.25, 3: 0.25, 4: 0.25 }, gradeFractions);
+rowButton.onclick = function () {
+    rowcount++;
+
+    // create the row elements
 }
 

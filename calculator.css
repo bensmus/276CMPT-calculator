@@ -69,12 +69,24 @@ input
 button
 {
     padding: 10px 15px; 
+}
+
+button.result
+{
     float: right;
     margin: 10px; 
     margin-top: 20px;
     background-color: crimson;
     color: white;
     border: none;
+}
+
+#rb
+{
+    border-color: rgb(163, 163, 163);
+    margin-top: 2px;
+    font-family: serif;
+    font-size: medium;
 }
 
 #result 
