@@ -1,32 +1,32 @@
 let gradeFractions = {}
 let weights = {}
-let rowcount = 4;
+let rowtotal = 4;
 
 // Displaying percentages for all rows
-for (let count = 1; count <= rowcount; count++) {
-    initialize(count);
+for (let rowcount = 1; rowcount <= rowtotal; rowcount++) {
+    initialize(rowcount);
 }
 
-function initialize(count) {
-    let p = document.getElementById("p" + count)
-    let n = document.getElementById("n" + count);
-    let d = document.getElementById("d" + count);
-    let w = document.getElementById("w" + count);
-    w.oninput = weightUpdate(w, count);
-    n.oninput = percentUpdate(n, d, p, count);
-    d.oninput = percentUpdate(n, d, p, count);
+function initialize(rowcount) {
+    let p = document.getElementById("p" + rowcount);
+    let n = document.getElementById("n" + rowcount);
+    let d = document.getElementById("d" + rowcount);
+    let w = document.getElementById("w" + rowcount);
+    w.oninput = weightUpdate(w, rowcount);
+    n.oninput = percentUpdate(n, d, p, rowcount);
+    d.oninput = percentUpdate(n, d, p, rowcount);
 }
 
-function weightUpdate(w, count) {
+function weightUpdate(w, rowcount) {
     return function () {
-        weights[count] = Number(w.value);
+        weights[rowcount] = Number(w.value);
     }
 }
 
-function percentUpdate(n, d, p, count) {
+function percentUpdate(n, d, p, rowcount) {
     return function () {
         gradeFraction = n.value / d.value;
-        gradeFractions[count] = gradeFraction;
+        gradeFractions[rowcount] = gradeFraction;
         p.innerHTML = Math.round(gradeFraction * 100) + "%";
     };
 }
@@ -43,21 +43,64 @@ weightedButton.onclick = function () {
 
 meanButton.onclick = function () {
     console.log("meanButton clicked");
-    result.innerHTML = calculateWeighted({ 1: 0.25, 2: 0.25, 3: 0.25, 4: 0.25 }, gradeFractions);
+    let scalar = 1 / rowtotal;
+    let evenDistribution = {}
+    for (let rowcount = 1; rowcount <= rowtotal; rowcount++) {
+        evenDistribution[rowcount] = scalar;
+    }
+    result.innerHTML = calculateWeighted(evenDistribution, gradeFractions);
 }
 
 function calculateWeighted(weights, gradeFractions) {
     let weightedFraction = 0;
-    for (let count = 1; count <= rowcount; count++) {
-        weightedFraction += weights[count] * gradeFractions[count];
+    for (let rowcount = 1; rowcount <= rowtotal; rowcount++) {
+        weightedFraction += weights[rowcount] * gradeFractions[rowcount];
     }
     let weighted = Math.round(weightedFraction * 100) + "%";
     return weighted;
 }
 
 rowButton.onclick = function () {
-    rowcount++;
+    console.log("addrowButton clicked");
+    rowtotal++;
 
-    // create the row elements
+    // find the parent element
+    let table = document.getElementsByTagName("table")[0];
+
+    // create a new row
+    let tr = document.createElement("tr");
+    table.appendChild(tr);
+
+    // create the row elements in HTML
+    // LONG NAME
+    let tdName = document.createElement("td");
+    tdName.innerHTML = "Activity " + rowtotal;
+    // add to row
+    tr.appendChild(tdName);
+
+    // SHORT NAME
+    let tdShortName = document.createElement("td");
+    tdShortName.innerHTML = "A" + rowtotal;
+    // add to row
+    tr.appendChild(tdShortName);
+
+    // WEIGHT 
+    let tdWeight = document.createElement("td");
+    tdWeight.innerHTML = `<input id=w${rowtotal}>`
+    tr.appendChild(tdWeight);
+
+    // GRADE (2 inputs)
+    let tdGrade = document.createElement("td");
+    tdGrade.innerHTML = `<input id=n${rowtotal}> <b> / </b><br><input id=d${rowtotal}>`
+    tr.appendChild(tdGrade);
+
+    // PERCENT
+    let tdPercent = document.createElement("td");
+    tdPercent.id = `p${rowtotal}`
+    // add to row
+    tr.appendChild(tdPercent);
+
+    // initialize JavaScript functionality
+    // for those elements
+    initialize(rowtotal)
 }
-
