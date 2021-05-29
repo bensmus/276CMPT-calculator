@@ -12,9 +12,13 @@ function initialize(rowcount) {
     let n = document.getElementById("n" + rowcount);
     let d = document.getElementById("d" + rowcount);
     let w = document.getElementById("w" + rowcount);
-    w.oninput = weightUpdate(w, rowcount);
-    n.oninput = percentUpdate(n, d, p, rowcount);
-    d.oninput = percentUpdate(n, d, p, rowcount);
+    weightUpdateFunction = weightUpdate(w, rowcount);
+    percentUpdateFunction = percentUpdate(n, d, p, rowcount);
+    weightUpdateFunction();
+    percentUpdateFunction();
+    w.oninput = weightUpdateFunction;
+    n.oninput = percentUpdateFunction;
+    d.oninput = percentUpdateFunction;
 }
 
 function weightUpdate(w, rowcount) {
@@ -33,7 +37,8 @@ function percentUpdate(n, d, p, rowcount) {
 
 weightedButton = document.getElementById("wb");
 meanButton = document.getElementById("mb");
-rowButton = document.getElementById("rb");
+rowPlus = document.getElementById("rplus");
+rowMinus = document.getElementById("rminus");
 result = document.getElementById("result");
 
 weightedButton.onclick = function () {
@@ -44,7 +49,7 @@ weightedButton.onclick = function () {
 meanButton.onclick = function () {
     console.log("meanButton clicked");
     let scalar = 1 / rowtotal;
-    let evenDistribution = {}
+    let evenDistribution = {};
     for (let rowcount = 1; rowcount <= rowtotal; rowcount++) {
         evenDistribution[rowcount] = scalar;
     }
@@ -60,8 +65,8 @@ function calculateWeighted(weights, gradeFractions) {
     return weighted;
 }
 
-rowButton.onclick = function () {
-    console.log("addrowButton clicked");
+rowPlus.onclick = function () {
+    console.log("rowPlus button clicked");
     rowtotal++;
 
     // find the parent element
@@ -70,6 +75,7 @@ rowButton.onclick = function () {
     // create a new row
     let tr = document.createElement("tr");
     table.appendChild(tr);
+    tr.id = `row${rowtotal}`
 
     // create the row elements in HTML
     // LONG NAME
@@ -86,12 +92,12 @@ rowButton.onclick = function () {
 
     // WEIGHT 
     let tdWeight = document.createElement("td");
-    tdWeight.innerHTML = `<input id=w${rowtotal}>`
+    tdWeight.innerHTML = `<input id=w${rowtotal} value=0>`
     tr.appendChild(tdWeight);
 
     // GRADE (2 inputs)
     let tdGrade = document.createElement("td");
-    tdGrade.innerHTML = `<input id=n${rowtotal}> <b> / </b><br><input id=d${rowtotal}>`
+    tdGrade.innerHTML = `<input id=n${rowtotal} value=0> <b> / </b><br><input id=d${rowtotal} value=1>`
     tr.appendChild(tdGrade);
 
     // PERCENT
@@ -103,4 +109,11 @@ rowButton.onclick = function () {
     // initialize JavaScript functionality
     // for those elements
     initialize(rowtotal)
+}
+
+rowMinus.onclick = function () {
+    // remove the row in the table corresponding to rowtotal
+    rowToRemove = document.getElementById(`row${rowtotal}`);
+    rowToRemove.remove();
+    rowtotal--;
 }
