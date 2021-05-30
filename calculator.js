@@ -114,6 +114,8 @@ rowPlus.onclick = function () {
 rowMinus.onclick = function () {
     // remove the row in the table corresponding to rowtotal
     rowToRemove = document.getElementById(`row${rowtotal}`);
-    rowToRemove.remove();
-    rowtotal--;
+    if (rowtotal > 0) {
+        rowToRemove.remove();
+        rowtotal--;
+    }
 }
