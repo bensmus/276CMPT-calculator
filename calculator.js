@@ -126,7 +126,7 @@ rowMinus.onclick = function () {
 function updateWarning(weights) {
     return function () {
         if (sumWeights(weights) != "1.00" && weightSheet.cssRules.length == 1) {
-            weightSheet.insertRule('input.weight { background-image: url("resources/warning.png"); }', weightSheet.cssRules.length);
+            weightSheet.insertRule('input.weight { background-image: url("resources/warning.png");}', weightSheet.cssRules.length);
             tooltip.style.visibility = "visible";
         } if (sumWeights(weights) == "1.00" && weightSheet.cssRules.length == 2) {
             weightSheet.deleteRule(weightSheet.cssRules.length - 1);

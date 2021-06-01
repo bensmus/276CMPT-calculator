@@ -116,6 +116,7 @@ button.row
     position: relative;
     top: -30px;
     left: -50px;
+    white-space: nowrap;
   }
 
   /* .weight:focus .tooltiptext {
