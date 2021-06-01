@@ -6,8 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CourSys - Formula Tester</title>
+    <style>
+        input.weight {
+            background-image: none;
+            background-size: 25px 25px;
+            background-repeat: no-repeat;
+            background-position: 100% 0%;
+            padding: 5px;
+            border: 1px solid #000
+        }
+    </style>
     <link rel="stylesheet" href="calculator.css">
     <link rel="icon" href="resources/favicon.ico">
+
 </head>
 
 <body>
@@ -21,7 +32,7 @@
                 <!--row 0-->
                 <th>Name</th>
                 <th>Short Name</th>
-                <th>Weight</th>
+                <th>Weight<span id=tooltip>Weights must all add to one</span></th>
                 <th>Grade</th>
                 <th>Percent</th>
             </tr>
@@ -29,7 +40,7 @@
                 <!--row 1-->
                 <td>Activity 1</td>
                 <td>A1</td>
-                <td><input id="w1" value=0>
+                <td><input id="w1" class="weight" value=0>
                 </td>
                 <td>
                     <input id=n1 value=0><b> /
@@ -41,7 +52,7 @@
                 <!--row 2-->
                 <td>Activity 2</td>
                 <td>A2</td>
-                <td><input id=w2 value=0></td>
+                <td><input id=w2 class="weight" value=0></td>
                 <td>
                     <input id=n2 value=0><b> /
                     </b><input id=d2 value=1>
@@ -51,7 +62,7 @@
                 <!--row 3-->
                 <td>Activity 3</td>
                 <td>A3</td>
-                <td><input id=w3 value=0></td>
+                <td><input id=w3 class="weight" value=0></td>
                 <td>
                     <input id=n3 value=0><b> /
                     </b><input id=d3 value=1>
@@ -62,7 +73,7 @@
                 <!--row 4-->
                 <td>Activity 4</td>
                 <td>A4</td>
-                <td><input id=w4 value=0></td>
+                <td><input id=w4 class="weight" value=0></td>
                 <td>
                     <input id=n4 value=0><b> /
                     </b><input id=d4 value=1>

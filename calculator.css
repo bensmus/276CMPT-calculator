@@ -105,3 +105,23 @@ button.row
     float: left;
     
 }
+
+#tooltip {
+    visibility: hidden;
+    color: black;
+    opacity: 50%;
+    font-size: x-small;
+    font-weight: 100;
+    font-family: sans-serif;
+    position: relative;
+    top: -30px;
+    left: -50px;
+  }
+
+  /* .weight:focus .tooltiptext {
+    visibility: visible;
+  } */
+  /* This is parent child syntax, input field never has child*/
+
+  /* <span class="tooltiptext">Weights must all add to one</span> */
+  /* <span class="tooltiptext">Enter a fraction</span> */
