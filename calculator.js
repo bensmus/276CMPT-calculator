@@ -3,6 +3,7 @@ let weights = {};
 let rowtotal = 4;
 let weightSheet = document.styleSheets[0];
 let tooltip = document.getElementById("tooltip");
+let ZERO_ERROR = "Division by zero error.";
 
 // Displaying percentages for all rows
 for (let rowcount = 1; rowcount <= rowtotal; rowcount++) {
@@ -34,7 +35,11 @@ function percentUpdate(n, d, p, rowcount) {
     return function () {
         gradeFraction = n.value / d.value;
         gradeFractions[rowcount] = gradeFraction;
-        p.innerHTML = Math.round(gradeFraction * 100) + "%";
+        if (Number(d.value) == 0) {
+            p.innerHTML = ZERO_ERROR;
+        } else {
+            p.innerHTML = Math.round(gradeFraction * 100) + "%";
+        }
     };
 }
 
@@ -64,8 +69,11 @@ function calculateWeighted(weights, gradeFractions) {
     for (let rowcount = 1; rowcount <= rowtotal; rowcount++) {
         weightedFraction += weights[rowcount] * gradeFractions[rowcount];
     }
-    let weighted = Math.round(weightedFraction * 100) + "%";
-    return weighted;
+    let weighted = String(Math.round(weightedFraction * 100)); // So we can compare "NaN" == "NaN" 
+    if (weighted == "NaN" || weighted == "Infinity") {
+        return ZERO_ERROR;
+    }
+    return weighted + "%";
 }
 
 rowPlus.onclick = function () {
