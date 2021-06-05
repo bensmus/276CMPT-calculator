@@ -1,14 +1,15 @@
 let gradeFractions = {};
 let weights = {};
-let rowtotal = 4;
+let rowtotal = 0;
 let weightSheet = document.styleSheets[0];
 let tooltip = document.getElementById("tooltip");
 let ZERO_ERROR = "Division by zero error.";
 
-// Displaying percentages for all rows
-for (let rowcount = 1; rowcount <= rowtotal; rowcount++) {
-    initialize(rowcount);
-}
+// Adding the four initial rows.
+addrow();
+addrow();
+addrow();
+addrow();
 
 function initialize(rowcount) {
     let p = document.getElementById("p" + rowcount);
@@ -143,7 +144,6 @@ function updateWarning(weights) {
             tooltip.style.visibility = "hidden";
         }
     }
-
 }
 
 function sumWeights(weights) {
