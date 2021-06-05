@@ -21,80 +21,84 @@
 
 </head>
 
-<body>
-    <h1>Grade Calculator</h1>
-    <div id="shaded">
-        <!-- "Activities", "Result": h2 -->
-        <h2>Activities</h2>
-        <p>Give grades to the numeric activities: </p>
-        <table>
-            <tr id="row0">
-                <!--row 0-->
-                <th>Name</th>
-                <th>Short Name</th>
-                <th>Weight<span id=tooltip>Weights must all add to one</span></th>
-                <th>Grade</th>
-                <th>Percent</th>
-            </tr>
-            <tr id="row1">
-                <!--row 1-->
-                <td>Activity 1</td>
-                <td>A1</td>
-                <td><input id="w1" class="weight" value=0>
-                </td>
-                <td>
-                    <input id=n1 value=0><b> /
-                    </b><input id=d1 value=1>
-                </td>
-                <td id="p1"></td>
-            </tr>
-            <tr id="row2">
-                <!--row 2-->
-                <td>Activity 2</td>
-                <td>A2</td>
-                <td><input id=w2 class="weight" value=0></td>
-                <td>
-                    <input id=n2 value=0><b> /
-                    </b><input id=d2 value=1>
-                <td id="p2"></td>
-            </tr>
-            <tr id="row3">
-                <!--row 3-->
-                <td>Activity 3</td>
-                <td>A3</td>
-                <td><input id=w3 class="weight" value=0></td>
-                <td>
-                    <input id=n3 value=0><b> /
-                    </b><input id=d3 value=1>
-                </td>
-                <td id="p3"></td>
-            </tr>
-            <tr id="row4">
-                <!--row 4-->
-                <td>Activity 4</td>
-                <td>A4</td>
-                <td><input id=w4 class="weight" value=0></td>
-                <td>
-                    <input id=n4 value=0><b> /
-                    </b><input id=d4 value=1>
-                </td>
-                <td id="p4"></td>
-            </tr>
-        </table>
-        <p id=rowlabel>Add or remove activities &#8594 &nbsp</p>
-        <button id=rplus class=row>+</button>
-        <button id=rminus class=row>-</button>
-        <h2>Result</h2>
-        <button id=mb class=result>MEAN</button>
-        <button id=wb class=result>WEIGHTED</button>
-        <div id=result>
-            Result not yet calculated.
-        </div>
-        <br>
-        <br>
-    </div>
 
+<body>
+    <div id=whiteback>
+        <h1>Grade Calculator</h1>
+        <div id="shaded">
+            <!-- "Activities", "Result": h2 -->
+            <h2>Activities</h2>
+            <p>Give grades to the numeric activities: </p>
+            <table>
+                <tr id="row0">
+                    <!--row 0-->
+                    <th>Name</th>
+                    <th>Short Name</th>
+                    <th>Weight<span id=tooltip>Weights must all add to one</span></th>
+                    <th>Grade</th>
+                    <th>Percent</th>
+                </tr>
+                <tr id="row1">
+                    <!--row 1-->
+                    <td>Activity 1</td>
+                    <td>A1</td>
+                    <td><input id="w1" class="weight" value=0>
+                    </td>
+                    <td>
+                        <input id=n1 value=0><b> /
+                        </b><input id=d1 value=1>
+                    </td>
+                    <td id="p1"></td>
+                </tr>
+                <tr id="row2">
+                    <!--row 2-->
+                    <td>Activity 2</td>
+                    <td>A2</td>
+                    <td><input id=w2 class="weight" value=0></td>
+                    <td>
+                        <input id=n2 value=0><b> /
+                        </b><input id=d2 value=1>
+                    <td id="p2"></td>
+                </tr>
+                <tr id="row3">
+                    <!--row 3-->
+                    <td>Activity 3</td>
+                    <td>A3</td>
+                    <td><input id=w3 class="weight" value=0></td>
+                    <td>
+                        <input id=n3 value=0><b> /
+                        </b><input id=d3 value=1>
+                    </td>
+                    <td id="p3"></td>
+                </tr>
+                <tr id="row4">
+                    <!--row 4-->
+                    <td>Activity 4</td>
+                    <td>A4</td>
+                    <td><input id=w4 class="weight" value=0></td>
+                    <td>
+                        <input id=n4 value=0><b> /
+                        </b><input id=d4 value=1>
+                    </td>
+                    <td id="p4"></td>
+                </tr>
+            </table>
+            <p id=rowlabel>Add or remove activities &#8594 &nbsp</p>
+            <button id=rplus class=row>+</button>
+            <button id=rminus class=row>-</button>
+            <h2>Result</h2>
+            <button id=mb class=result>MEAN</button>
+            <button id=wb class=result>WEIGHTED</button>
+            <div id=result>
+                Result not yet calculated.
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
 </body>
+
+
 
 <script src="calculator.js"></script>
 

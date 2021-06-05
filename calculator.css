@@ -1,7 +1,21 @@
 body
 {
-    margin: 30px;
-    margin-top: 50px;
+    background-color: rgb(153, 7, 37);
+}
+
+#whiteback
+{
+    box-shadow: 10px 10px 8px 5px rgba(34, 34, 34, 0.178), -10px -10px 8px 5px rgba(34, 34, 34, 0.178);
+    padding: 30px;
+    margin: 50px;
+    background-color: white;
+    border-top-width: 30px;
+    border-top-style: solid;
+    border-top-color: rgba(34, 34, 34, 0.877);
+
+    border-bottom-width: 30px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(34, 34, 34, 0.877);
 }
 
 h1 
@@ -126,3 +140,6 @@ button.row
 
   /* <span class="tooltiptext">Weights must all add to one</span> */
   /* <span class="tooltiptext">Enter a fraction</span> */
+
+  /* making the white, black, red -> purely decorative */
+
