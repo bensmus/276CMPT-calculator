@@ -122,8 +122,8 @@ button.row
 
 #tooltip {
     visibility: hidden;
-    color: black;
-    opacity: 50%;
+    color: crimson;
+    /* opacity: 50%; */
     font-size: x-small;
     font-weight: 100;
     font-family: sans-serif;

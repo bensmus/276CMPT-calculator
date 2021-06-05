@@ -56,7 +56,7 @@ weightedButton.onclick = function () {
 
 meanButton.onclick = function () {
     console.log("meanButton clicked");
-    let scalar = 1 / rowtotal;
+    let scalar = 100 / rowtotal;
     let evenDistribution = {};
     for (let rowcount = 1; rowcount <= rowtotal; rowcount++) {
         evenDistribution[rowcount] = scalar;
@@ -69,14 +69,16 @@ function calculateWeighted(weights, gradeFractions) {
     for (let rowcount = 1; rowcount <= rowtotal; rowcount++) {
         weightedFraction += weights[rowcount] * gradeFractions[rowcount];
     }
-    let weighted = String(Math.round(weightedFraction * 100)); // So we can compare "NaN" == "NaN" 
+    let weighted = String(Math.round(weightedFraction)); // So we can compare "NaN" == "NaN" 
     if (weighted == "NaN" || weighted == "Infinity") {
         return ZERO_ERROR;
     }
     return weighted + "%";
 }
 
-rowPlus.onclick = function () {
+rowPlus.onclick = addrow;
+
+function addrow() {
     console.log("rowPlus button clicked");
     rowtotal++;
 
@@ -103,7 +105,7 @@ rowPlus.onclick = function () {
 
     // WEIGHT 
     let tdWeight = document.createElement("td");
-    tdWeight.innerHTML = `<input id=w${rowtotal} value=0>`
+    tdWeight.innerHTML = `<input id=w${rowtotal} value=0> %`
     tr.appendChild(tdWeight);
 
     // GRADE (2 inputs)
@@ -133,10 +135,10 @@ rowMinus.onclick = function () {
 
 function updateWarning(weights) {
     return function () {
-        if (sumWeights(weights) != "1.00" && weightSheet.cssRules.length == 1) {
+        if (sumWeights(weights) != "100" && weightSheet.cssRules.length == 1) {
             weightSheet.insertRule('input.weight { background-image: url("resources/warning.png");}', weightSheet.cssRules.length);
             tooltip.style.visibility = "visible";
-        } if (sumWeights(weights) == "1.00" && weightSheet.cssRules.length == 2) {
+        } if (sumWeights(weights) == "100" && weightSheet.cssRules.length == 2) {
             weightSheet.deleteRule(weightSheet.cssRules.length - 1);
             tooltip.style.visibility = "hidden";
         }
