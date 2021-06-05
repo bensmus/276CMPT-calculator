@@ -106,7 +106,7 @@ function addrow() {
 
     // WEIGHT 
     let tdWeight = document.createElement("td");
-    tdWeight.innerHTML = `<input id=w${rowtotal} value=0> %`
+    tdWeight.innerHTML = `<input id=w${rowtotal} class=weight value=0> %`
     tr.appendChild(tdWeight);
 
     // GRADE (2 inputs)
